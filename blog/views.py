@@ -40,10 +40,36 @@ def detail(request, blog_id):
     return render(request, 'detail.html', {'blog': blog_detail,"average":average})
 
 
-#def comment(request,post_id):
+def comment(request,post_id):
+
+    pos = get_object_or_404(Portfolio, pk = post_id)
+    if request.method =="POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = pos
+            comment.save()
+            return redirect('index')
+    
+    else:
+        form = CommentForm()
+        return render(request, 'comment.html', {'form':form})
 
 
-#def co_update(request, post_id):
+def co_update(request, post_id):
+    pos = get_object_or_404(Comment, pk = post_id)
+    if request.method =="POST":
+        form = CommentForm(request.POST, instance=pos)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.save()
+            return redirect('index')
+    
+    else:
+        form = CommentForm()
+        return render(request, 'create.html', {'form':form})
 
-
-#def co_delete(request,post_id):
+def co_delete(request,post_id):
+    comment = get_object_or_404(Comment, pk = post_id)
+    comment.delete()
+    return redirect('index')
