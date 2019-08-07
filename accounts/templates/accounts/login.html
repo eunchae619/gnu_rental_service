@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="kr">
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <title>빌려DREAM</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'accounts/login.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="mainback">
+            <div class="mainbox">
+                <header class="header" style="font-size: 100px">빌려DREAM</header>
+                <h2>로그인</h2>
+                <div class="login_big_box">
+
+                    {% if error %}
+                        {{ error }}
+                        <br>
+                        <br>
+                    {% endif %}
+                    <form method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        
+                        <div class="login_box">
+                            <input type="text" name="username" placeholder="USERNAME">
+                            <br><br>
+                            <input type="password" name="password" placeholder="PASSWORD">
+                        </div>
+                        <br>
+                        <div class="submit_btn">
+                            <input type="submit" value="login!">
+                        </div>
+                    </form>    
+
+                    <br>
+                    <div class="signup">
+                        <a href="{% url 'signup' %}">아이디가 없으신가요?</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

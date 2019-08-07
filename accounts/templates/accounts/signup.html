@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="kr">
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <title>빌려DREAM</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'accounts/signup.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="mainback">
+            <div class="mainbox">
+                <header class="header" style="font-size: 100px">빌려DREAM</header>
+                <h2>회원가입</h2>
+                <div class="login_big_box">
+
+                    <form method="POST" action="{% url 'signup' %}">
+                        {% csrf_token %}
+                        <div class="login_box">
+                            <input type="text" name="username" placeholder="USERNAME">
+                            <br><br>
+                            <input type="password" name="password1" placeholder="PASSWORD">
+                            <br><br>
+                            <input type="password" name="password2" placeholder="PASSWORD AGAIN">
+                        </div>
+                        <br>
+                        <div class="submit_btn">
+                            <input type="submit" value="나도 이제 회원이얌!">
+                        </div>
+                        <br>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
