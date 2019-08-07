@@ -12,7 +12,9 @@ from django.db.models import Avg
 
 
 #list.html에서 게시글 보여주는 key값 = "posts"
-#def list(request):
+def list(request):
+    posts = Portfolio.objects.all()  
+    return render(request, 'list.html', {'posts' : posts})
 
 
 #def create(request):
