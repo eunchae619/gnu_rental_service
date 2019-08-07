@@ -10,7 +10,12 @@ from django.db import models
 #Comment필드는 ('post','작성자', '내용','평점')
 class Comment(models.Model):
 
-    
+    post = models.ForeignKey(Portfolio, on_delete=models.CASCADE, related_name='com', null=True)
+    작성자 = models.CharField(max_length=200)
+    내용 = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
     grade_total= (
     (5, '5점'),
 
@@ -26,3 +31,10 @@ class Comment(models.Model):
         choices=grade_total,
         default= 5
     )
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.내용
