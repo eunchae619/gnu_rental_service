@@ -7,5 +7,5 @@ from django.db import models
 #class Portfolio(models.Model)
 
 
-#Comment필드는 ('작성자', '내용','grade')
+#Comment필드는 ('post','작성자', '내용','평점')
 #class Comment(models.Model):
