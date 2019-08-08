@@ -21,7 +21,7 @@
                         {% csrf_token %}
                         {% if user.is_authenticated %}
                         <input type="hidden" name="작성자" maxlength="10" required id="id_작성자" value="{{ user.username }}">        
-                        <strong>{{ user.username }}</strong>
+                        <strong>{{ user.username }}</strong>{{form.평점}}
                         {% else %}
                         <input type="hidden" name="작성자" maxlength="10" required id="id_작성자" value="익명">
                         <strong>익명</strong>{{form.평점}}
