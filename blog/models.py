@@ -4,7 +4,15 @@ from django.db import models
 
 
 #Portfolio필드는 ('제목', '사진','임대기간','포인트','내용')
-#class Portfolio(models.Model)
+class Portfolio(models.Model):
+    제목 = models.CharField(max_length=200)
+    사진 = models.ImageField(upload_to='images/')
+    임대기간 = models.DateTimeField('date published')
+    포인트 = models.IntegerField(default=0)
+    내용 = models.TextField()
+    
+    def __str__(self):
+        return self.제목
 
 
 #Comment필드는 ('post','작성자', '내용','평점')

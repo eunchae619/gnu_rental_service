@@ -6,10 +6,13 @@ from .forms import NewBlog, CommentForm
 
 
 #index.html에서 게시글 보여주는 key값 = "posts"
-#def index(request):
+def index(request):
+    posts = Portfolio.objects.all()  
+    return render(request, 'index.html', {'posts' : posts})
 
 
-#def about(request):
+def about(request):
+    return render(request, 'about.html')
 
 
 #list.html에서 게시글 보여주는 key값 = "posts"
@@ -18,13 +21,32 @@ def list(request):
     return render(request, 'list.html', {'posts' : posts})
 
 
-#def create(request):
+def create(request):
+    if request.method == 'POST' : 
+        form = NewBlog(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit = False) 
+            post.save()
+            return redirect('index')
+
+    elif request.method == 'GET' :
+        form = NewBlog()
+        return render(request, 'create.html', {'form' : form})
 
 
-#def update(request, blog_id):
+def update(request, blog_id):
+    blog = get_object_or_404(Portfolio, pk = blog_id )
+    form = NewBlog(request.POST, instance = blog) 
+    if form.is_valid():
+        form.save()
+        return redirect('index')
+    return render(request, 'create.html', {'form' : form})
 
 
-#def delete(request, blog_id):
+def delete(request, blog_id):
+    post = get_object_or_404(Portfolio, pk = blog_id ) 
+    post.delete()
+    return redirect('index')
 
 
 #detail.html에서 평균평점 보여주는 key값 = "average"
