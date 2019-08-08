@@ -8,7 +8,7 @@ from django.utils import timezone
 class Portfolio(models.Model):
     제목 = models.CharField(max_length=200)
     사진 = models.ImageField(upload_to='images/')
-    임대기간 = models.DateTimeField('date published')
+    임대기간 = models.IntegerField(default=0)
     포인트 = models.IntegerField(default=0)
     내용 = models.TextField()
 
