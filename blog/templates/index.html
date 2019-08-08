@@ -42,7 +42,9 @@
 
         {% for rental in posts %}
             <div class="review_box">
-            <a href="{% url 'detail' blog.id %}"><img class="image" style="height:200px; width: 200px;" src="{{ rental.사진.url }}" alt="Card image cap"></a>
+                <p>{{ rental.제목 }}</p>
+                <a href="{% url 'detail' blog.id %}"><img class="image" style="height:200px; width: 200px;" src="{{ rental.사진.url }}" alt="Card image cap"></a>
+                <p>{{ rental.내용 }}</p>
             </div>
         {% endfor %}
     </div>

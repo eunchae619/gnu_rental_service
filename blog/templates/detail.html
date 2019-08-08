@@ -57,7 +57,7 @@
                         <div class="comment">
                             <div class="date">{{ comment.created_date }}</div>
                             <strong>{{ comment.작성자 }}</strong>
-                            <p>{{ comment.내용|linebreaks }}</p>평점 : {{comment.grade}}
+                            <p>{{ comment.내용|linebreaks }}</p>평점 : {{comment.평점}}
 
                         </div>
                         <a href="{% url 'co_update' comment.id %}">후기 수정</a> &emsp;
