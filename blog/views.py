@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Portfolio, Comment
 from django.db.models import Avg
+from .forms import NewBlog, CommentForm
 # Create your views here.
 
 
