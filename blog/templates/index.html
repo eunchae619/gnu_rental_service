@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="row">
-        <header class="header" style="font-size: 150px;">맛집 리뷰</header>
+        <header class="header" style="font-size: 150px;">물품 대여</header>
 
         <div class="nav_bar">
             <ul class="nav">
@@ -29,11 +29,11 @@
             </ul> 
         </div> 
 
-        {% for mukbang in mukbang.all %}
+        {% for rental in rental.all %}
         <div class="review_box">
-            <h3>{{ mukbang.title }}</h3>
-            <img class="image" style="height:350px;" src="{{ mukbang.image.url }}" alt="Card image cap">
-            <p>{{ mukbang.description }}</p>
+            <h3>{{ rental.title }}</h3>
+            <img class="image" style="height:350px;" src="{{ rental.image.url }}" alt="Card image cap">
+            <p>{{ rental.description }}</p>
         </div>
         {% endfor %}
     </div>
