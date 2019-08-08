@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -10,7 +11,7 @@ class Portfolio(models.Model):
     임대기간 = models.DateTimeField('date published')
     포인트 = models.IntegerField(default=0)
     내용 = models.TextField()
-    
+
     def __str__(self):
         return self.제목
 
