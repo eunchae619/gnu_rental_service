@@ -3,5 +3,45 @@
 
 {% block content %}
 <!--내용추가할곳-->
+<div class="row">
+        <header class="header" style="font-size: 150px;">맛집 리뷰</header>
 
+        <div class="nav_bar">
+            <ul class="nav">
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님!</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% comment %} create인데 글쓰기 넣기? {% endcomment %}
+                        <a class="dropdown-item" href="">글쓰기</a> 
+                        <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                        <form id="logout" method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %} <input type="hidden" />
+                        </form>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'signup' %}">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul> 
+        </div> 
+
+        <div class="review_box">
+            <div class="review">
+                <form method='POST' enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }} <!--form은 view에서 설정한 딕셔너리 키값-->
+                    </table>
+                    <input class="btn" type="submit" value="제출하기">
+                </form>
+            </div>
+        </div>
+
+</div>
 {% endblock %}
