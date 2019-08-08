@@ -8,7 +8,9 @@
 </div>
 <div class="list">
     {% for goods in posts %}
-    <img class="image" style="height:350px; width: 350px;" src="{{ goods.image.url }}" alt="anfvna">
+    <div class="review_box">    
+    <a href="{% url 'detail' blog.id %}"><img class="image" style="height:350px; width: 350px;" src="{{ goods.image.url }}" alt="anfvna"></a>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}

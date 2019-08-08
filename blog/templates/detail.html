@@ -8,6 +8,9 @@
 
         <div class="nav_bar">
             <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
+                </li>            
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님!</a>
@@ -27,6 +30,14 @@
                     <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                 </li>
                 {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'list' %}">List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+                </li>
+
             </ul> 
         </div> 
 
@@ -46,7 +57,7 @@
                         <div class="comment">
                             <div class="date">{{ comment.created_date }}</div>
                             <strong>{{ comment.작성자 }}</strong>
-                            <p>{{ comment.내용|linebreaks }}</p>평점 : {{comment.평점}}
+                            <p>{{ comment.내용|linebreaks }}</p>평점 : {{comment.grade}}
 
                         </div>
                         <a href="{% url 'co_update' comment.id %}">후기 수정</a> &emsp;
