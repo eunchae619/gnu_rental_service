@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!--내용추가할곳-->
+<div class="row">
+        <header class="header" style="font-size: 150px;">물품 대여</header>
+
+        <div class="nav_bar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
+                </li>            
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님!</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'create' %}">글쓰기</a>
+                        <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                        <form id="logout" method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %} <input type="hidden" />
+                        </form>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'signup' %}">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'list' %}">List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+                </li>
+
+            </ul> 
+        </div> 
+
+        <div class="review_box">
+                <div class="review">
+                    <p><img src="{{ blog.사진.url }}" style="height: 300px;" alt="hyeonee"></p>
+                    <p>품명 : {{ blog.제목 }}</p>
+                    <p>Point : {{ blog.포인트 }}</p>
+                    <p>임대기간 : {{ blog.임대기간 }}</p>
+                    <p>평균평점 : {{average}}</p>
+
+                    <input type='button' value='임대하기'> &emsp;
+                    <input type='button' value='찜하기'> 
+                    <!--{% comment %} 후기 작성란 {% endcomment %}-->
+                    <div class="review_box">
+                    {% for comment in blog.com %}        
+                        <div class="comment">
+                            <div class="date">{{ comment.created_date }}</div>
+                            <strong>{{ comment.작성자 }}</strong>
+                            <p>{{ comment.내용|linebreaks }}</p>평점 : {{comment.grade}}
+
+                        </div>
+                        <a href="{% url 'co_update' comment.id %}">후기 수정</a> &emsp;
+                        <a href="{% url 'co_delete' comment.id %}">후기 삭제</a>
+                        <hr>
+                        {% empty %}
+                        <p>아직 댓글이 없습니다. :(</p>
+                    {% endfor %}    
+                    </div>
+                </div>
+        </div>
+
+</div>
+{% endblock %}

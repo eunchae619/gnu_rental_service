@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!--내용추가할곳-->
+    <div class="review_box">
+        <div class="review">
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }} <!--form은 view에서 설정한 딕셔너리 키값-->
+                </table>
+                <input class="btn" type="submit" value="댓글 작성하기">
+            </form>
+        </div>
+    </div>
+{% endblock %}

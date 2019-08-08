@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!--내용추가할곳-->
+<div class="list_detail">
+    <p>목록</p>
+</div>
+<div class="list">
+    {% for goods in posts %}
+    <div class="review_box">    
+    <a href="{% url 'detail' blog.id %}"><img class="image" style="height:200px; width: 200px;" src="{{ goods.사진.url }}" alt="anfvna"></a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
