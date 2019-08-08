@@ -14,7 +14,26 @@
 
                     <input type='button' value='임대하기'> &emsp;
                     <input type='button' value='찜하기'> <br><br><hr><br>
-                    <a href="{% url 'comment' blog.id %}"><input type='button' value='후기 작성하기'></a>
+
+                    <!-- 댓글 기능-->
+
+                    <form method = "POST" enctype = "multipart/form-data">
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                        <input type="hidden" name="작성자" maxlength="10" required id="id_작성자" value="{{ user.username }}">        
+                        <strong>{{ user.username }}</strong>
+                        {% else %}
+                        <input type="hidden" name="작성자" maxlength="10" required id="id_작성자" value="익명">
+                        <strong>익명</strong>{{form.평점}}
+                        {% endif %}
+                        <br>
+                                
+                        <textarea name="내용" cols="80" rows="3" maxlength="100" required id="id_내용" style="resize:none;"></textarea>
+                        <input type = "submit" value="댓글달기">
+                        <br>                       
+                        
+                        
+                    </form>
 
                     <div class="box">
                         {% for comment in blog.com.all %}   

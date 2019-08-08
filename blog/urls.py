@@ -12,7 +12,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('list/', views.list, name='list'),
     
-    path('comment/<int:post_id>', views.comment, name='comment'),
     path('co_update/<int:post_id>', views.co_update, name='co_update'),
     path('co_delete/<int:post_id>', views.co_delete, name='co_delete'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
