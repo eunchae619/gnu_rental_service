@@ -3,9 +3,9 @@
 {% block content %}
         {% for rental in posts %}
             <div class="review_box">
-                {{rental.제목}}
-                <a href="{% url 'detail' rental.id %}"><img class="image" style="height:200px; width: 200px;" src="{{ rental.사진.url }}" alt="Card image cap"></a>
-                {{rental.내용}}
+                <div class="title"><p>{{rental.제목}}</p></div>
+                <div class="image"><a href="{% url 'detail' rental.id %}"><img style="height:200px; width: 200px;" src="{{ rental.사진.url }}" alt="Card image cap"></a></div>
+                <div class="des"><small>{{rental.내용}}</small></div>
             </div>
  
         {% endfor %}
