@@ -42,7 +42,7 @@
                     <input type='button' value='찜하기'> 
                     {% comment %} 후기 작성란 {% endcomment %}
                     <div class="review_box">
-                    {% for comment in blog.com.all %}        
+                    {% for comment in blog.com %}        
                         <div class="comment">
                             <div class="date">{{ comment.created_date }}</div>
                             <strong>{{ comment.작성자 }}</strong>
