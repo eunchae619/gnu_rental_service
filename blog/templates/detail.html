@@ -14,7 +14,9 @@
                     
 
                     <input type='button' value='임대하기'> &emsp;
-                    <input type='button' value='찜하기'> <br><br><hr><br>
+                    <input type='button' value='찜하기'> <br><br>
+                    <a href="{% url 'update' blog.id %}"><input type="button" value="글 수정" style="float: right;"></a> &emsp;
+                    <a href="{% url 'delete' blog.id %}"><input type="button" value="글 삭제" style="float: right;"></a><br><br><hr>
 
                     <!-- 댓글 기능-->
 
