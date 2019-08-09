@@ -2,13 +2,21 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Portfolio, Comment
 from django.db.models import Avg
 from .forms import NewBlog, CommentForm
+from django.core.paginator import Paginator
 # Create your views here.
 
-
-#index.html에서 게시글 보여주는 key값 = "posts"
 def index(request):
-    posts = Portfolio.objects.all()  
-    return render(request, 'index.html', {'posts' : posts})
+    posts = Portfolio.objects.all
+    #블로그 모든 글들을 대상으로
+    blog_list=Portfolio.objects.all()
+    #블로그 객체 세 개를 한 페이지로 자르기
+    paginator = Paginator(blog_list,4)
+    #request된 페이지가 뭔지를 알아내고 ( request페이지를 변수에 담아냄 )
+    page = request.GET.get('page')
+    #request된 페이지를 얻어온 뒤 return 해 준다
+    pages = paginator.get_page(page)
+    
+    return render(request,'index.html',{'posts':posts,'pages':pages})
 
 
 def about(request):

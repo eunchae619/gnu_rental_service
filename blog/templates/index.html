@@ -1,12 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        {% for rental in posts %}
+        {% for rental in pages %}
             <div class="review_box">
                 <div class="title"><p>{{rental.제목}}</p></div>
                 <div class="image"><a href="{% url 'detail' rental.id %}"><img style="height:200px; width: 200px;" src="{{ rental.사진.url }}" alt="Card image cap"></a></div>
                 <div class="des"><small>{{rental.내용}}</small></div>
             </div>
- 
         {% endfor %}
+            <!-- 페이지 수 -->
+            <div class="page">
+                {%if pages.has_previous%}
+                <div class="prev">
+                    <a href="?page=1">처음</a>
+                    <a href="?page={{pages.previous_page_number}}">이전</a>
+                </div>
+                {%endif%}
+                
+                <div class="cent">
+                    <span class="page_num">{{pages.number}}</span>
+                    <span class="page_num">of</span>
+                    <span class="page_num">{{pages.paginator.num_pages}}</span>
+                </div>
+
+                {%if pages.has_next%}
+                <div class="nex">                
+                    <a href="?page={{pages.next_page_number}}">다음</a>
+                    <a href="?page={{pages.paginator.num_pages}}">마지막</a>
+                </div>
+                {%endif%}
+            </div>
+        
 {% endblock %}
