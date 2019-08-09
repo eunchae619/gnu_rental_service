@@ -6,13 +6,15 @@
         <div class="bigbox">
                 <div class="review">
                     
-                    <p>제품명 : {{ blog.제목 }}</p>
+                    <p><strong>제품명</strong> : {{ blog.제목 }}</p>
                     <hr>
-                    <p><img src="{{ blog.사진.url }}" style="height: 300px;" alt="hyeonee"></p>
-                    <p>포인트 : {{ blog.포인트 }}Point</p>
-                    <p>임대기간 : {{ blog.임대기간 }}일</p>
-                    <p>평균평점 : {{average}}점</p>
-                    <p>내용 : {{blog.내용}}</p>
+                    <div class="con_img"><img src="{{ blog.사진.url }}" style="height: 300px;" alt="hyeonee"></div>
+                    <div class="con_text">
+                        <p><strong>포인트</strong> : {{ blog.포인트 }}Point</p>
+                        <p><strong>임대기간</strong> : {{ blog.임대기간 }}일</p>
+                        <p><strong>평균평점</strong> : {{average}}점</p>
+                    </div>
+                    <p>{{blog.내용}}</p>
                     
 
                     <input type='button' value='임대하기'> &emsp;
@@ -33,7 +35,7 @@
                         {% endif %}
                         <br>
                                 
-                        <textarea name="내용" cols="80" rows="3" maxlength="100" required id="id_내용" style="resize:none;"></textarea>
+                        <textarea name="내용" cols="50" rows="3" maxlength="100" required id="id_내용" style="resize:none;"></textarea>
                         <input type = "submit" value="댓글달기">
                         <br>                       
                         
