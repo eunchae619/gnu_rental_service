@@ -5,11 +5,13 @@
 <!--내용추가할곳-->
         <div class="bigbox">
                 <div class="review">
+                    
+                    <p>제품명 : {{ blog.제목 }}</p>
+                    <hr>
                     <p><img src="{{ blog.사진.url }}" style="height: 300px;" alt="hyeonee"></p>
-                    <p>품명 : {{ blog.제목 }}</p>
-                    <p>Point : {{ blog.포인트 }}</p>
-                    <p>임대기간 : {{ blog.임대기간 }}</p>
-                    <p>평균평점 : {{average}}</p>
+                    <p>포인트 : {{ blog.포인트 }}Point</p>
+                    <p>임대기간 : {{ blog.임대기간 }}일</p>
+                    <p>평균평점 : {{average}}점</p>
                     <p>내용 : {{blog.내용}}</p>
                     
 
